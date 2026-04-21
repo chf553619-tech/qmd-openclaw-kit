@@ -20,3 +20,10 @@ All notable changes to this project will be documented in this file.
 ### Improved
 - Bootstrap flow is safe to rerun
 - Repository structure is now ready for open-source reuse
+
+## [0.1.1] - 2026-04-22
+
+### Improved
+- Refined CUDA wrapper policy so `cuda` is selected only when NVIDIA userland indicators and CUDA toolkit availability are present
+- Documented a verified WSL CUDA success case for QMD on NVIDIA hardware
+- Added CUDA verification helper documentation (`docs/check-qmd-cuda.md`)
