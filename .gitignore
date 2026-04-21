@@ -1,0 +1,19 @@
+# Ignore local runtime noise
+.env
+.env.*
+*.log
+*.pid
+
+# Node / package managers
+node_modules/
+.npm/
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# QMD runtime artifacts
+.qmd/
+.cache/

@@ -1,0 +1,11 @@
+{
+  // Example snippet: merge into ~/.openclaw/openclaw.json
+  "mcp": {
+    "servers": {
+      "qmd": {
+        "command": "/ABSOLUTE/PATH/TO/qmd-openclaw-kit/scripts/start-qmd-mcp.sh",
+        "args": []
+      }
+    }
+  }
+}
