@@ -6,7 +6,7 @@ This integration kit does **not** patch upstream QMD. Instead, it makes backend 
 
 - If you know the correct backend, set `QMD_LLAMA_GPU` explicitly.
 - Otherwise use the provided wrapper script, which selects:
-  - `cuda` when `nvidia-smi` and `libcuda.so` are present
+  - `cuda` when NVIDIA userland indicators **and CUDA toolkit availability** are present
   - `vulkan` when `vulkaninfo` and `glslc` are present
   - `false` (CPU mode) otherwise
 
@@ -46,7 +46,19 @@ The wrapper only checks for minimal userland indicators. Real CUDA support may s
 
 - compatible NVIDIA Windows driver with WSL GPU support
 - `libcuda.so` visibility inside WSL
-- optional CUDA toolkit pieces depending on your backend/build path
+- CUDA Toolkit / `nvcc` availability when node-llama-cpp needs to build a local CUDA backend
+
+## Verified WSL CUDA result
+
+This integration flow was successfully verified on a WSL host with an NVIDIA GeForce RTX 3050 Ti Laptop GPU after installing CUDA Toolkit:
+
+- `nvcc` available
+- CUDA libraries visible (`libcudart`, `libcublas`, `libcuda`)
+- `QMD_LLAMA_GPU=cuda qmd status` reported:
+  - `GPU: cuda (offloading: yes)`
+  - NVIDIA device name present
+  - VRAM visibility working
+- QMD MCP wrapper restarted successfully on the CUDA path
 
 ## Validation
 

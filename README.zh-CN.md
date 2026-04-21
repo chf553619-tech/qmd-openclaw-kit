@@ -147,6 +147,7 @@ QMD_LLAMA_GPU=false qmd embed --max-docs-per-batch 12 --max-batch-mb 8
 
 - 架构说明：[`docs/architecture.zh-CN.md`](./docs/architecture.zh-CN.md)
 - GPU / 后端说明：[`docs/gpu-setup.zh-CN.md`](./docs/gpu-setup.zh-CN.md)
+- CUDA 验证辅助说明：[`docs/check-qmd-cuda.md`](./docs/check-qmd-cuda.md)
 - Collections 基线：[`docs/collections.md`](./docs/collections.md)
 - 发布检查表：[`docs/release-checklist.md`](./docs/release-checklist.md)
 - 更新日志：[`CHANGELOG.md`](./CHANGELOG.md)

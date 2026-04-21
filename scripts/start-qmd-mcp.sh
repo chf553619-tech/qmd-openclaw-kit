@@ -9,7 +9,9 @@ fi
 have_cuda=0
 have_vulkan=0
 
-if command -v nvidia-smi >/dev/null 2>&1 && ldconfig -p 2>/dev/null | grep -q 'libcuda\.so'; then
+if command -v nvidia-smi >/dev/null 2>&1 \
+  && ldconfig -p 2>/dev/null | grep -q 'libcuda\.so' \
+  && ( command -v nvcc >/dev/null 2>&1 || [ -x /usr/local/cuda/bin/nvcc ] || [ -n "${CUDAToolkit_ROOT:-}" ] ); then
   have_cuda=1
 fi
 

@@ -6,7 +6,7 @@
 
 - 如果你明确知道该用什么后端，就直接显式设置 `QMD_LLAMA_GPU`
 - 否则使用本仓库自带包装脚本，它会按以下顺序选择：
-  - 检测到 `nvidia-smi` 和 `libcuda.so` 时用 `cuda`
+  - 只有在 NVIDIA 用户态条件 **且 CUDA Toolkit 可用** 时才用 `cuda`
   - 检测到 `vulkaninfo` 和 `glslc` 时用 `vulkan`
   - 否则回落到 `false`（CPU 模式）
 
@@ -46,7 +46,19 @@ sudo apt-get install -y libvulkan-dev vulkan-tools glslc glslang-tools
 
 - 支持 WSL GPU 的 NVIDIA Windows 驱动
 - WSL 内能看到 `libcuda.so`
-- 根据实际后端构建路径，可能还需要额外 CUDA toolkit 组件
+- 当 node-llama-cpp 需要本地构建 CUDA 后端时，还需要 CUDA Toolkit / `nvcc`
+
+## 已验证的 WSL CUDA 结果
+
+这一套流程已经在一台带 NVIDIA GeForce RTX 3050 Ti Laptop GPU 的 WSL 主机上实测打通。在安装 CUDA Toolkit 后，验证结果包括：
+
+- `nvcc` 可用
+- `libcudart` / `libcublas` / `libcuda` 可见
+- `QMD_LLAMA_GPU=cuda qmd status` 显示：
+  - `GPU: cuda (offloading: yes)`
+  - 能识别 NVIDIA 设备名
+  - 能读取 VRAM 信息
+- QMD MCP wrapper 可在 CUDA 路径上成功重启
 
 ## 验证方式
 
