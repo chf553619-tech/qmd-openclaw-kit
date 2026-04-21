@@ -7,43 +7,66 @@ OPENCLAW_SKILLS="${OPENCLAW_HOME}/custom/skills"
 BUNDLED_SKILLS="${HOME}/.local/lib/node_modules/openclaw/skills"
 BUNDLED_DOCS="${HOME}/.local/lib/node_modules/openclaw/docs"
 
-add_collection() {
-  local path="$1"
-  local name="$2"
-  local mask="$3"
-  if [ -d "$path" ]; then
-    qmd collection add "$path" --name "$name" --mask "$mask" || true
-  else
-    printf 'skip missing dir: %s\n' "$path"
+require_bin() {
+  if ! command -v "$1" >/dev/null 2>&1; then
+    printf 'missing required binary: %s\n' "$1" >&2
+    exit 1
   fi
 }
 
-add_context() {
-  local uri="$1"
-  local text="$2"
-  qmd context add "$uri" "$text" || true
+collection_exists() {
+  qmd collection show "$1" >/dev/null 2>&1
 }
 
-add_collection "$WORKSPACE_ROOT" workspace-root '*.md'
-add_collection "$WORKSPACE_ROOT/memory" workspace-memory '**/*.md'
-add_collection "$WORKSPACE_ROOT/docs" openclaw-docs '**/*.md'
-add_collection "$OPENCLAW_SKILLS" custom-skills '**/*.md'
-add_collection "$BUNDLED_SKILLS" bundled-skills '**/*.md'
-add_collection "$BUNDLED_DOCS" bundled-docs '**/*.md'
-add_collection "$WORKSPACE_ROOT/OpenClaw-Admin" openclaw-admin '**/*.md'
-add_collection "$WORKSPACE_ROOT/projects" workspace-projects '**/*.md'
-add_collection "$WORKSPACE_ROOT/external/qmd" upstream-qmd '**/*.md'
+ensure_collection() {
+  local path="$1"
+  local name="$2"
+  local mask="$3"
 
-add_context 'qmd://workspace-root/' 'Main OpenClaw workspace root documents: identity, user profile, tools, soul, heartbeat, operational notes.'
-add_context 'qmd://workspace-memory/' 'Session memory and daily notes. Use for recent events, decisions, tasks, and continuity before rereading raw files.'
-add_context 'qmd://openclaw-docs/' 'Local workspace docs folder for this OpenClaw environment.'
-add_context 'qmd://custom-skills/' 'User custom skills for this OpenClaw installation. Search here for local workflows and custom retrieval habits.'
-add_context 'qmd://bundled-skills/' 'Bundled OpenClaw skills. Search here before rereading long skill docs to decide which skill applies.'
-add_context 'qmd://bundled-docs/' 'Bundled OpenClaw product documentation and CLI docs. Prefer this for commands, config shape, architecture, and troubleshooting.'
-add_context 'qmd://openclaw-admin/' 'Operational notes, deployment docs, issue summaries, and user-facing guides for the OpenClaw-Admin project.'
-add_context 'qmd://workspace-projects/' 'Reusable project kits and implementation docs created in the workspace projects directory.'
-add_context 'qmd://upstream-qmd/' 'Upstream QMD source tree docs and README. Search here for official behavior, CLI examples, and architecture notes.'
+  if [ ! -d "$path" ]; then
+    printf 'skip missing dir: %s\n' "$path"
+    return 0
+  fi
+
+  if collection_exists "$name"; then
+    printf 'collection exists: %s\n' "$name"
+  else
+    printf 'creating collection: %s -> %s (%s)\n' "$name" "$path" "$mask"
+    qmd collection add "$path" --name "$name" --mask "$mask"
+  fi
+}
+
+ensure_context() {
+  local uri="$1"
+  local text="$2"
+
+  qmd context rm "$uri" >/dev/null 2>&1 || true
+  qmd context add "$uri" "$text"
+}
+
+require_bin qmd
+
+ensure_collection "$WORKSPACE_ROOT" workspace-root '*.md'
+ensure_collection "$WORKSPACE_ROOT/memory" workspace-memory '**/*.md'
+ensure_collection "$WORKSPACE_ROOT/docs" openclaw-docs '**/*.md'
+ensure_collection "$OPENCLAW_SKILLS" custom-skills '**/*.md'
+ensure_collection "$BUNDLED_SKILLS" bundled-skills '**/*.md'
+ensure_collection "$BUNDLED_DOCS" bundled-docs '**/*.md'
+ensure_collection "$WORKSPACE_ROOT/OpenClaw-Admin" openclaw-admin '**/*.md'
+ensure_collection "$WORKSPACE_ROOT/projects" workspace-projects '**/*.md'
+ensure_collection "$WORKSPACE_ROOT/external/qmd" upstream-qmd '**/*.md'
+
+ensure_context 'qmd://workspace-root/' 'Main OpenClaw workspace root documents: identity, user profile, tools, soul, heartbeat, operational notes.'
+ensure_context 'qmd://workspace-memory/' 'Session memory and daily notes. Use for recent events, decisions, tasks, and continuity before rereading raw files.'
+ensure_context 'qmd://openclaw-docs/' 'Local workspace docs folder for this OpenClaw environment.'
+ensure_context 'qmd://custom-skills/' 'User custom skills for this OpenClaw installation. Search here for local workflows and custom retrieval habits.'
+ensure_context 'qmd://bundled-skills/' 'Bundled OpenClaw skills. Search here before rereading long skill docs to decide which skill applies.'
+ensure_context 'qmd://bundled-docs/' 'Bundled OpenClaw product documentation and CLI docs. Prefer this for commands, config shape, architecture, and troubleshooting.'
+ensure_context 'qmd://openclaw-admin/' 'Operational notes, deployment docs, issue summaries, and user-facing guides for the OpenClaw-Admin project.'
+ensure_context 'qmd://workspace-projects/' 'Reusable project kits and implementation docs created in the workspace projects directory.'
+ensure_context 'qmd://upstream-qmd/' 'Upstream QMD source tree docs and README. Search here for official behavior, CLI examples, and architecture notes.'
 
 qmd update
 
-echo 'Done. Run qmd embed when you want semantic vectors.'
+echo 'Done. Bootstrap is complete and safe to rerun.'
+echo 'Run qmd embed when you want semantic vectors.'

@@ -77,6 +77,12 @@ OPENCLAW_HOME="$HOME/.openclaw" \
 - 自定义 skills
 - 可选的 projects 目录
 
+这个 bootstrap 脚本被设计成**可重复安全执行**：
+
+- 已存在的 collections 会复用
+- collection contexts 会原位刷新
+- 缺失目录会被干净跳过
+
 ### 3）把 QMD 接进 OpenClaw MCP
 
 参考：[`templates/openclaw.jsonc`](./templates/openclaw.jsonc)
@@ -119,6 +125,16 @@ QMD_LLAMA_GPU=false qmd embed --max-docs-per-batch 12 --max-batch-mb 8
 1. 先用 QMD 检索
 2. 再精读真正相关的文件
 3. 把高 token 的大段重读放到最后
+
+## 示例
+
+- 最小部署：[`examples/openclaw-minimal`](./examples/openclaw-minimal)
+- WSL + NVIDIA 示例：[`examples/openclaw-wsl-gpu`](./examples/openclaw-wsl-gpu)
+
+## 项目卫生
+
+- CI：[`/.github/workflows/ci.yml`](./.github/workflows/ci.yml)
+- 贡献说明：[`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ## 致谢与归属
 

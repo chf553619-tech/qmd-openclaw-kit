@@ -77,6 +77,12 @@ This registers common OpenClaw knowledge sources such as:
 - custom skills
 - optional projects folder
 
+The bootstrap script is designed to be **safe to rerun**:
+
+- existing collections are reused
+- collection contexts are refreshed in place
+- missing directories are skipped cleanly
+
 ### 3) Wire QMD into OpenClaw MCP
 
 See [`templates/openclaw.jsonc`](./templates/openclaw.jsonc).
@@ -119,6 +125,16 @@ Its policy is straightforward:
 1. search with QMD first
 2. read only the files that matter
 3. keep token-heavy rereads as a last resort
+
+## Examples
+
+- Minimal setup: [`examples/openclaw-minimal`](./examples/openclaw-minimal)
+- WSL + NVIDIA notes: [`examples/openclaw-wsl-gpu`](./examples/openclaw-wsl-gpu)
+
+## Project hygiene
+
+- CI workflow: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
+- Contribution guide: [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ## Attribution
 
