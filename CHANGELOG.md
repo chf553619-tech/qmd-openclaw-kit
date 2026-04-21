@@ -28,3 +28,4 @@ All notable changes to this project will be documented in this file.
 - Documented a verified WSL CUDA success case for QMD on NVIDIA hardware
 - Added CUDA verification helper documentation (`docs/check-qmd-cuda.md`)
 - Verified GPU-mode embedding generation completed successfully on WSL CUDA (`291` embedded vectors from `125` documents)
+- Published a deployment audit summarizing health status, retrieval effectiveness, and estimated token savings (`docs/audit-2026-04-22.md`)

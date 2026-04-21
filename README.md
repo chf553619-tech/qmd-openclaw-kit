@@ -148,6 +148,7 @@ Its policy is straightforward:
 - Architecture: [`docs/architecture.md`](./docs/architecture.md)
 - GPU / backend notes: [`docs/gpu-setup.md`](./docs/gpu-setup.md)
 - CUDA verification helper: [`docs/check-qmd-cuda.md`](./docs/check-qmd-cuda.md)
+- Deployment audit: [`docs/audit-2026-04-22.md`](./docs/audit-2026-04-22.md)
 - Collections baseline: [`docs/collections.md`](./docs/collections.md)
 - Release checklist: [`docs/release-checklist.md`](./docs/release-checklist.md)
 - Changelog: [`CHANGELOG.md`](./CHANGELOG.md)
