@@ -19,6 +19,37 @@
 - [Attribution](#attribution)
 - [License](#license)
 
+## Impact at a glance
+
+![QMD impact overview](./docs/assets/qmd-impact-overview.svg)
+
+### Audit snapshot
+
+| Metric | Current result |
+|---|---|
+| OpenClaw gateway | reachable |
+| QMD MCP | running |
+| QMD health endpoint | ok |
+| GPU mode | CUDA (`offloading: yes`) |
+| Indexed docs | 125 |
+| Embedded vectors | 291 |
+| Retrieval smoke test | passed |
+| Estimated token savings | ~33%–71% |
+
+### Why QMD helps
+
+| Without QMD | With QMD |
+|---|---|
+| reread multiple candidate markdown files | search locally first |
+| often include large README/setup docs “just in case” | read only the likely answer-bearing docs |
+| spend tokens rediscovering where the answer is | narrow the reread set before expensive context expansion |
+| context payload grows quickly | context stays tighter and more targeted |
+
+See also:
+
+- English audit: [`docs/audit-2026-04-22.md`](./docs/audit-2026-04-22.md)
+- 中文审计：[`docs/audit-2026-04-22.zh-CN.md`](./docs/audit-2026-04-22.zh-CN.md)
+
 ## What this project is
 
 QMD OpenClaw Kit is a thin integration layer built **on top of upstream QMD**.

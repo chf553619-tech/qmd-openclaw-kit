@@ -1,0 +1,87 @@
+<svg width="1000" height="640" viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">QMD impact overview</title>
+  <desc id="desc">Overview chart showing health, retrieval impact, and estimated token savings for the QMD OpenClaw deployment.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <style>
+      .h1 { font: 700 32px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
+      .h2 { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #e5e7eb; }
+      .body { font: 400 14px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
+      .small { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .num { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
+      .label { font: 600 13px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
+      .axis { font: 500 12px 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="640" rx="24" fill="url(#bg)"/>
+
+  <text x="42" y="58" class="h1">QMD impact overview</text>
+  <text x="42" y="84" class="body">OpenClaw + QMD deployment audit snapshot · 2026-04-22</text>
+
+  <rect x="42" y="112" width="212" height="104" rx="18" fill="#111827" stroke="#1f2937"/>
+  <text x="60" y="146" class="small">QMD health</text>
+  <text x="60" y="182" class="num">Healthy</text>
+  <text x="60" y="204" class="body">MCP running · health ok</text>
+
+  <rect x="270" y="112" width="212" height="104" rx="18" fill="#111827" stroke="#1f2937"/>
+  <text x="288" y="146" class="small">GPU mode</text>
+  <text x="288" y="182" class="num">CUDA</text>
+  <text x="288" y="204" class="body">offloading: yes</text>
+
+  <rect x="498" y="112" width="212" height="104" rx="18" fill="#111827" stroke="#1f2937"/>
+  <text x="516" y="146" class="small">Indexed / embedded</text>
+  <text x="516" y="182" class="num">125 / 291</text>
+  <text x="516" y="204" class="body">docs / vectors</text>
+
+  <rect x="726" y="112" width="232" height="104" rx="18" fill="#111827" stroke="#1f2937"/>
+  <text x="744" y="146" class="small">Estimated token savings</text>
+  <text x="744" y="182" class="num">33%–71%</text>
+  <text x="744" y="204" class="body">retrieval-first vs naive reread</text>
+
+  <text x="42" y="270" class="h2">Token comparison (estimated prompt context)</text>
+  <text x="42" y="292" class="small">Representative local docs, rough estimate by chars/4</text>
+
+  <line x1="220" y1="330" x2="930" y2="330" stroke="#334155" stroke-width="1"/>
+  <line x1="220" y1="390" x2="930" y2="390" stroke="#334155" stroke-width="1"/>
+  <line x1="220" y1="450" x2="930" y2="450" stroke="#334155" stroke-width="1"/>
+  <line x1="220" y1="510" x2="930" y2="510" stroke="#334155" stroke-width="1"/>
+
+  <text x="42" y="336" class="label">Full reread baseline</text>
+  <rect x="220" y="314" width="640" height="24" rx="12" fill="#334155"/>
+  <rect x="220" y="314" width="640" height="24" rx="12" fill="url(#blue)"/>
+  <text x="875" y="331" class="label">3585</text>
+
+  <text x="42" y="396" class="label">Case A · query + README + qmd-setup + gpu-setup</text>
+  <rect x="220" y="374" width="640" height="24" rx="12" fill="#334155"/>
+  <rect x="220" y="374" width="427" height="24" rx="12" fill="url(#green)"/>
+  <text x="662" y="391" class="label">2392 · -33.3%</text>
+
+  <text x="42" y="456" class="label">Case B · query + README + gpu-setup</text>
+  <rect x="220" y="434" width="640" height="24" rx="12" fill="#334155"/>
+  <rect x="220" y="434" width="370" height="24" rx="12" fill="url(#green)"/>
+  <text x="605" y="451" class="label">2073 · -42.2%</text>
+
+  <text x="42" y="516" class="label">Case C · query + setup + deployment-notes + memory</text>
+  <rect x="220" y="494" width="640" height="24" rx="12" fill="#334155"/>
+  <rect x="220" y="494" width="187" height="24" rx="12" fill="url(#amber)"/>
+  <text x="422" y="511" class="label">1047 · -70.8%</text>
+
+  <text x="42" y="578" class="small">Takeaway: QMD does not remove LLM cost; it reduces unnecessary rereads by narrowing the document set before large-context reads.</text>
+  <text x="42" y="602" class="small">Best operational pattern: fast retrieval first, selective rerank second, heavyweight rereads last.</text>
+</svg>

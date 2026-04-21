@@ -19,6 +19,37 @@
 - [致谢与归属](#致谢与归属)
 - [License](#license)
 
+## 效果总览
+
+![QMD 效果总览](./docs/assets/qmd-impact-overview.svg)
+
+### 当前审计快照
+
+| 指标 | 当前结果 |
+|---|---|
+| OpenClaw gateway | reachable |
+| QMD MCP | running |
+| QMD health endpoint | ok |
+| GPU 模式 | CUDA（`offloading: yes`） |
+| 已索引文档 | 125 |
+| 已生成向量 | 291 |
+| 检索 smoke test | passed |
+| 估算 token 节省 | 约 33%–71% |
+
+### 为什么 QMD 有用
+
+| 没有 QMD | 有 QMD |
+|---|---|
+| 直接重读多个候选 markdown 文件 | 先做本地检索 |
+| 常把 README / setup 大文档一起塞进上下文 | 只精读高概率相关文档 |
+| 先花 token 找答案在哪 | 先缩小范围，再扩上下文 |
+| 上下文很容易越滚越大 | 上下文更聚焦、更可控 |
+
+可进一步阅读：
+
+- 英文审计：[`docs/audit-2026-04-22.md`](./docs/audit-2026-04-22.md)
+- 中文审计：[`docs/audit-2026-04-22.zh-CN.md`](./docs/audit-2026-04-22.zh-CN.md)
+
 ## 这是什么
 
 QMD OpenClaw Kit 是一个**构建在上游 QMD 之上的轻量集成层**。
@@ -148,6 +179,8 @@ QMD_LLAMA_GPU=false qmd embed --max-docs-per-batch 12 --max-batch-mb 8
 - 架构说明：[`docs/architecture.zh-CN.md`](./docs/architecture.zh-CN.md)
 - GPU / 后端说明：[`docs/gpu-setup.zh-CN.md`](./docs/gpu-setup.zh-CN.md)
 - CUDA 验证辅助说明：[`docs/check-qmd-cuda.md`](./docs/check-qmd-cuda.md)
+- 部署审计（EN）：[`docs/audit-2026-04-22.md`](./docs/audit-2026-04-22.md)
+- 部署审计（中文）：[`docs/audit-2026-04-22.zh-CN.md`](./docs/audit-2026-04-22.zh-CN.md)
 - Collections 基线：[`docs/collections.md`](./docs/collections.md)
 - 发布检查表：[`docs/release-checklist.md`](./docs/release-checklist.md)
 - 更新日志：[`CHANGELOG.md`](./CHANGELOG.md)
