@@ -34,7 +34,9 @@
 | Indexed docs | 125 |
 | Embedded vectors | 291 |
 | Retrieval smoke test | passed |
-| Estimated token savings | ~33%–71% |
+| Estimated token savings (analysis, not billing export) | ~33%–71% |
+
+> Note: the health / MCP / GPU / docs / vectors figures are measured from the live deployment. The token-savings figures are estimated from representative local document sizes, not provider billing exports.
 
 ### Why QMD helps
 
