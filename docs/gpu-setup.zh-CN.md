@@ -59,6 +59,9 @@ sudo apt-get install -y libvulkan-dev vulkan-tools glslc glslang-tools
   - 能识别 NVIDIA 设备名
   - 能读取 VRAM 信息
 - QMD MCP wrapper 可在 CUDA 路径上成功重启
+- GPU 模式 embedding 已成功完成：
+  - `QMD_LLAMA_GPU=cuda qmd embed --max-docs-per-batch 12 --max-batch-mb 8`
+  - `Embedded 291 chunks from 125 documents in 1m 0s`
 
 ## 验证方式
 

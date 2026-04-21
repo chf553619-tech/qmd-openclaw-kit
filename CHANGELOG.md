@@ -27,3 +27,4 @@ All notable changes to this project will be documented in this file.
 - Refined CUDA wrapper policy so `cuda` is selected only when NVIDIA userland indicators and CUDA toolkit availability are present
 - Documented a verified WSL CUDA success case for QMD on NVIDIA hardware
 - Added CUDA verification helper documentation (`docs/check-qmd-cuda.md`)
+- Verified GPU-mode embedding generation completed successfully on WSL CUDA (`291` embedded vectors from `125` documents)

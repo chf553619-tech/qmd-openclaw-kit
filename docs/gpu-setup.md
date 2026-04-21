@@ -59,6 +59,9 @@ This integration flow was successfully verified on a WSL host with an NVIDIA GeF
   - NVIDIA device name present
   - VRAM visibility working
 - QMD MCP wrapper restarted successfully on the CUDA path
+- GPU-mode embeddings completed successfully with:
+  - `QMD_LLAMA_GPU=cuda qmd embed --max-docs-per-batch 12 --max-batch-mb 8`
+  - `Embedded 291 chunks from 125 documents in 1m 0s`
 
 ## Validation
 
