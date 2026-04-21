@@ -1,8 +1,23 @@
 # QMD OpenClaw Kit
 
+[![CI](https://github.com/chf553619-tech/qmd-openclaw-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/chf553619-tech/qmd-openclaw-kit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![基于 QMD](https://img.shields.io/badge/Based%20on-QMD-blue)](https://github.com/tobi/qmd)
+
 **一个可复用的集成套件，用来把 [QMD](https://github.com/tobi/qmd) 变成 OpenClaw 与智能体工作流中的低 token 本地检索层。**
 
 > 简体中文 | [English](./README.md)
+
+## 导航
+
+- [这是什么](#这是什么)
+- [为什么要做这个](#为什么要做这个)
+- [特性](#特性)
+- [快速开始](#快速开始)
+- [文档与示例](#文档与示例)
+- [发布状态](#发布状态)
+- [致谢与归属](#致谢与归属)
+- [License](#license)
 
 ## 这是什么
 
@@ -126,7 +141,17 @@ QMD_LLAMA_GPU=false qmd embed --max-docs-per-batch 12 --max-batch-mb 8
 2. 再精读真正相关的文件
 3. 把高 token 的大段重读放到最后
 
-## 示例
+## 文档与示例
+
+### 核心文档
+
+- 架构说明：[`docs/architecture.zh-CN.md`](./docs/architecture.zh-CN.md)
+- GPU / 后端说明：[`docs/gpu-setup.zh-CN.md`](./docs/gpu-setup.zh-CN.md)
+- Collections 基线：[`docs/collections.md`](./docs/collections.md)
+- 发布检查表：[`docs/release-checklist.md`](./docs/release-checklist.md)
+- 更新日志：[`CHANGELOG.md`](./CHANGELOG.md)
+
+### 示例
 
 - 最小部署：[`examples/openclaw-minimal`](./examples/openclaw-minimal)
 - WSL + NVIDIA 示例：[`examples/openclaw-wsl-gpu`](./examples/openclaw-wsl-gpu)
@@ -135,6 +160,14 @@ QMD_LLAMA_GPU=false qmd embed --max-docs-per-batch 12 --max-batch-mb 8
 
 - CI：[`/.github/workflows/ci.yml`](./.github/workflows/ci.yml)
 - 贡献说明：[`CONTRIBUTING.md`](./CONTRIBUTING.md)
+
+## 发布状态
+
+这个仓库现在已经进入首个可复用发布阶段。
+
+建议首个版本标签：
+
+- `v0.1.0`
 
 ## 致谢与归属
 

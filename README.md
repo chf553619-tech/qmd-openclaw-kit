@@ -1,8 +1,23 @@
 # QMD OpenClaw Kit
 
+[![CI](https://github.com/chf553619-tech/qmd-openclaw-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/chf553619-tech/qmd-openclaw-kit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Upstream QMD](https://img.shields.io/badge/Based%20on-QMD-blue)](https://github.com/tobi/qmd)
+
 **A reusable integration kit for turning [QMD](https://github.com/tobi/qmd) into a low-token local retrieval layer for OpenClaw and agent workflows.**
 
 > English | [简体中文](./README.zh-CN.md)
+
+## Overview
+
+- [What this project is](#what-this-project-is)
+- [Why this exists](#why-this-exists)
+- [Features](#features)
+- [Quick start](#quick-start)
+- [Docs and examples](#docs-and-examples)
+- [Release status](#release-status)
+- [Attribution](#attribution)
+- [License](#license)
 
 ## What this project is
 
@@ -126,7 +141,17 @@ Its policy is straightforward:
 2. read only the files that matter
 3. keep token-heavy rereads as a last resort
 
-## Examples
+## Docs and examples
+
+### Core docs
+
+- Architecture: [`docs/architecture.md`](./docs/architecture.md)
+- GPU / backend notes: [`docs/gpu-setup.md`](./docs/gpu-setup.md)
+- Collections baseline: [`docs/collections.md`](./docs/collections.md)
+- Release checklist: [`docs/release-checklist.md`](./docs/release-checklist.md)
+- Changelog: [`CHANGELOG.md`](./CHANGELOG.md)
+
+### Examples
 
 - Minimal setup: [`examples/openclaw-minimal`](./examples/openclaw-minimal)
 - WSL + NVIDIA notes: [`examples/openclaw-wsl-gpu`](./examples/openclaw-wsl-gpu)
@@ -135,6 +160,14 @@ Its policy is straightforward:
 
 - CI workflow: [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
 - Contribution guide: [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+
+## Release status
+
+This repository is now at an initial reusable release stage.
+
+Suggested first tag:
+
+- `v0.1.0`
 
 ## Attribution
 
