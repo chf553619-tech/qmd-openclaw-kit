@@ -1,0 +1,67 @@
+<svg width="1200" height="560" viewBox="0 0 1200 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">QMD token 节省估算</title>
+  <desc id="desc">使用 QMD 先检索再精读，相对直接整篇重读的 token 节省估算图。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <style>
+      .h1 { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
+      .body { font: 400 15px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
+      .small { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .rowLabel { font: 600 15px 'Segoe UI', Arial, sans-serif; fill: #e5e7eb; }
+      .rowHint { font: 400 12px 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .value { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #dbeafe; }
+      .note { font: 400 13px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
+    </style>
+  </defs>
+  <rect width="1200" height="560" rx="24" fill="url(#bg)"/>
+  <text x="44" y="58" class="h1">QMD token 节省估算</text>
+  <text x="44" y="84" class="body">分析估算 · 基于代表性本地文档 · 对比“直接重读”与“先检索再精读”</text>
+  <text x="44" y="106" class="small">不是 provider 账单真值。这里基于本地文档大小，按 chars/4 做粗略 prompt-token 估算。</text>
+
+  <line x1="380" y1="190" x2="1088" y2="190" stroke="#334155" stroke-width="1"/>
+  <line x1="380" y1="278" x2="1088" y2="278" stroke="#334155" stroke-width="1"/>
+  <line x1="380" y1="366" x2="1088" y2="366" stroke="#334155" stroke-width="1"/>
+  <line x1="380" y1="454" x2="1088" y2="454" stroke="#334155" stroke-width="1"/>
+
+  <text x="44" y="173" class="rowLabel">全量重读基线</text>
+  <text x="44" y="193" class="rowHint">不经过 QMD 缩小范围，直接重读代表性文档集合</text>
+  <rect x="380" y="162" width="708" height="24" rx="12" fill="#334155"/>
+  <rect x="380" y="162" width="708" height="24" rx="12" fill="url(#blue)"/>
+  <text x="1104" y="179" class="value">3585</text>
+
+  <text x="44" y="261" class="rowLabel">场景 A</text>
+  <text x="44" y="281" class="rowHint">query + README + qmd-setup + gpu-setup</text>
+  <rect x="380" y="250" width="708" height="24" rx="12" fill="#334155"/>
+  <rect x="380" y="250" width="472" height="24" rx="12" fill="url(#green)"/>
+  <text x="1104" y="267" class="value">2392 · -33.3%</text>
+
+  <text x="44" y="349" class="rowLabel">场景 B</text>
+  <text x="44" y="369" class="rowHint">query + README + gpu-setup</text>
+  <rect x="380" y="338" width="708" height="24" rx="12" fill="#334155"/>
+  <rect x="380" y="338" width="409" height="24" rx="12" fill="url(#green)"/>
+  <text x="1104" y="355" class="value">2073 · -42.2%</text>
+
+  <text x="44" y="437" class="rowLabel">场景 C</text>
+  <text x="44" y="457" class="rowHint">query + qmd-setup + deployment-notes + qmd-layer-memory</text>
+  <rect x="380" y="426" width="708" height="24" rx="12" fill="#334155"/>
+  <rect x="380" y="426" width="207" height="24" rx="12" fill="url(#amber)"/>
+  <text x="1104" y="443" class="value">1047 · -70.8%</text>
+
+  <text x="44" y="510" class="note">解释：QMD 不是让 LLM 成本消失，而是通过先缩小候选文档范围，减少不必要的大段重读。</text>
+  <text x="44" y="532" class="small">建议把这张图当成决策参考估算，而不是 provider 计费后台导出的账单数字。</text>
+</svg>

@@ -21,7 +21,13 @@
 
 ## Impact at a glance
 
-![QMD impact overview](./docs/assets/qmd-impact-overview.svg)
+### Measured runtime status
+
+![QMD runtime status](./docs/assets/qmd-runtime-status.svg)
+
+### Estimated token-savings analysis
+
+![QMD token savings estimate](./docs/assets/qmd-token-savings-estimate.svg)
 
 ### Audit snapshot
 

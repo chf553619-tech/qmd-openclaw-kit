@@ -21,7 +21,13 @@
 
 ## 效果总览
 
-![QMD 效果总览](./docs/assets/qmd-impact-overview.svg)
+### 实测运行状态
+
+![QMD 运行状态](./docs/assets/qmd-runtime-status.zh-CN.svg)
+
+### Token 节省估算
+
+![QMD token 节省估算](./docs/assets/qmd-token-savings-estimate.zh-CN.svg)
 
 ### 当前审计快照
 

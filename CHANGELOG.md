@@ -30,3 +30,4 @@ All notable changes to this project will be documented in this file.
 - Verified GPU-mode embedding generation completed successfully on WSL CUDA (`291` embedded vectors from `125` documents)
 - Published a deployment audit summarizing health status, retrieval effectiveness, and estimated token savings (`docs/audit-2026-04-22.md`)
 - Added a Chinese deployment audit and homepage-friendly SVG/chart summary for QMD impact and estimated token savings
+- Split homepage visuals into separate measured-status and estimated-token-savings charts, with Chinese SVG variants for the Chinese README
